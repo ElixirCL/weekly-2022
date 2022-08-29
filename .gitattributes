@@ -1,0 +1,5 @@
+$ cat .gitattributes
+* text=auto
+*.livemd linguist-language=Markdown
+*.livemd linguist-vendored
+

@@ -1,0 +1,64 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 1 - Anagrama
+
+## ¿Es un Anagrama?
+
+* Reto #1
+* Fecha publicación enunciado: 03/01/22
+* Dificultad: MEDIA
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge1.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Enunciado
+
+Escribe una función que reciba dos palabras (String) y retorne verdadero o falso (Boolean) según sean o no anagramas.
+
+* Un Anagrama consiste en formar una palabra reordenando TODAS las letras de otra palabra inicial.
+* NO hace falta comprobar que ambas palabras existan.
+* Dos palabras exactamente iguales no son anagrama.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def anagram?(first, second) when first == second do
+    false
+  end
+
+  def anagram?(first, second) do
+    Enum.sort(String.to_charlist(first)) == Enum.sort(String.to_charlist(second))
+  end
+
+  def run(first, second) do
+    anagram?(String.downcase(first), String.downcase(second))
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:run, 2}}
+```
+
+```elixir
+Solution.run("amor", "roma")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+```
+
+```elixir
+Solution.run("amor", "amor")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+false
+```
