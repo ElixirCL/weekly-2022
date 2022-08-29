@@ -1,6 +1,6 @@
 <!-- livebook:{"persist_outputs":true} -->
 
-# 3 - Fibonacci
+# 2 - Fibonacci
 
 ## LA SUCESIÓN DE FIBONACCI
 
