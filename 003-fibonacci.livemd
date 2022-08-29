@@ -1,0 +1,132 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 3 - Fibonacci
+
+## LA SUCESIÓN DE FIBONACCI
+
+* Reto #2
+* Fecha publicación enunciado: 10/01/22
+* Dificultad: DIFÍCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge2.kt
+
+## Enunciado
+
+Escribe un programa que imprima los 50 primeros números de la sucesión de Fibonacci empezando en 0. La serie Fibonacci se compone por una sucesión de números en la que el siguiente siempre es la suma de los dos anteriores.
+
+> 0, 1, 1, 2, 3, 5, 8, 13...
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def fib(acc, 0) do
+    {acc, 0}
+  end
+
+  def fib(acc, 1) do
+    {acc, 1}
+  end
+
+  def fib(acc, index) do
+    {acc, first} =
+      case Enum.at(acc, index - 1) do
+        nil -> fib(acc, index - 1)
+        number -> {acc, number}
+      end
+
+    {acc, second} =
+      case Enum.at(acc, index - 2) do
+        nil -> fib(acc, index - 2)
+        number -> {acc, number}
+      end
+
+    result = first + second
+
+    {acc ++ [result], result}
+  end
+
+  def print({_acc, number}) do
+    IO.inspect(number)
+  end
+
+  def run(iterations) do
+    iterations
+    |> Enum.each(fn index ->
+      fib([], index)
+      |> print()
+    end)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 10, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run(0..50)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+0
+1
+1
+2
+5
+10
+20
+40
+80
+160
+320
+640
+1280
+2560
+5120
+10240
+20480
+40960
+81920
+163840
+327680
+655360
+1310720
+2621440
+5242880
+10485760
+20971520
+41943040
+83886080
+167772160
+335544320
+671088640
+1342177280
+2684354560
+5368709120
+10737418240
+21474836480
+42949672960
+85899345920
+171798691840
+343597383680
+687194767360
+1374389534720
+2748779069440
+5497558138880
+10995116277760
+21990232555520
+43980465111040
+87960930222080
+175921860444160
+351843720888320
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
