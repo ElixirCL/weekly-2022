@@ -1,0 +1,140 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 5 - Aspect Ratio
+
+```elixir
+Mix.install([
+  {:ex_image_info, "~> 0.2.4"}
+])
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+Resolving Hex dependencies...
+Dependency resolution completed:
+New:
+  ex_image_info 0.2.4
+* Getting ex_image_info (Hex package)
+==> ex_image_info
+Compiling 12 files (.ex)
+Generated ex_image_info app
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+## ASPECT RATIO DE UNA IMAGEN
+
+* Reto #5
+* Fecha publicación enunciado: 01/02/22
+* Dificultad: DIFÍCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge5.kt
+
+## Enunciado
+
+Crea un programa que se encargue de calcular el aspect ratio de una imagen a partir de una url.
+
+* Url de ejemplo: https://raw.githubusercontent.com/ElixirCL/elixircl.github.io/main/assets/logo.png
+* Por ratio hacemos referencia por ejemplo a los "16:9" de una imagen de 1920*1080px.
+
+## Solución
+
+```elixir
+# See https://stackoverflow.com/questions/30267943/elixir-download-a-file-image-from-a-url
+defmodule Download do
+  def from(url) do
+    :inets.start()
+    :ssl.start()
+    Application.ensure_all_started(:inets)
+
+    {:ok, response} =
+      :httpc.request(:get, {String.to_charlist(url), []}, [], body_format: :binary)
+
+    {{_, 200, 'OK'}, _headers, body} = response
+
+    body
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Download, <<70, 79, 82, 49, 0, 0, 8, ...>>, {:from, 1}}
+```
+
+```elixir
+# See https://hexdocs.pm/ex_image_info/readme.html#examples
+defmodule Image do
+  require ExImageInfo
+  defstruct [:data, :width, :height, :mime, :type]
+
+  def from(data) do
+    info = ExImageInfo.info(data)
+    {mime, width, height, type} = info
+
+    %__MODULE__{data: data, width: width, height: height, mime: mime, type: type}
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Image, <<70, 79, 82, 49, 0, 0, 9, ...>>, {:from, 1}}
+```
+
+```elixir
+defmodule AspectRatio do
+  # Greatest Common Divisor
+  # See https://stackoverflow.com/questions/1186414/whats-the-algorithm-to-calculate-aspect-ratio
+  defp gcd(a, b) when b == 0 do
+    a
+  end
+
+  defp gcd(a, b) do
+    gcd(b, rem(a, b))
+  end
+
+  def get(%Image{} = image) do
+    divisor = gcd(image.width, image.height)
+    "#{div(image.width, divisor)}:#{div(image.height, divisor)}"
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, AspectRatio, <<70, 79, 82, 49, 0, 0, 9, ...>>, {:get, 1}}
+```
+
+```elixir
+defmodule Solution do
+  def run(url) do
+    Download.from(url)
+    |> Image.from()
+    |> AspectRatio.get()
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run("https://raw.githubusercontent.com/ElixirCL/elixircl.github.io/main/assets/logo.png")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"1007:1343"
+```
