@@ -1,0 +1,115 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 03 - Números Primos
+
+## ¿ES UN NÚMERO PRIMO?
+
+* Reto #3
+* Fecha publicación enunciado: 17/01/22
+* Dificultad: MEDIA
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge3.kt
+
+## Enunciado
+
+Escribe un programa que se encargue de comprobar si un número es o no primo.
+Hecho esto, imprime los números primos entre 1 y 100.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def prime?(number, _divisor) when number < 2 do
+    false
+  end
+
+  def prime?(number, divisor) when rem(number, divisor) == 0 do
+    false
+  end
+
+  def prime?(_number, _divisor) do
+    true
+  end
+
+  def prime?(number) when number < 2 do
+    false
+  end
+
+  def prime?(number) when number == 2 or number == 3 do
+    true
+  end
+
+  def prime?(number) do
+    Enum.map(2..div(number, 2), fn divisor -> prime?(number, divisor) end)
+    |> Enum.filter(fn item -> item == false end)
+    |> Enum.count() <= 0
+  end
+
+  def run(range) when is_list(range) do
+    range
+    |> Enum.map(fn num -> {num, run(num)} end)
+    |> Enum.filter(fn {_num, prime?} -> prime? end)
+    |> Enum.each(fn {num, _prime?} -> IO.inspect(num) end)
+  end
+
+  def run(number) do
+    prime?(number)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 12, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run(31)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+```
+
+```elixir
+Enum.to_list(1..100)
+|> Solution.run()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+2
+3
+5
+7
+11
+13
+17
+19
+23
+29
+31
+37
+41
+43
+47
+53
+59
+61
+67
+71
+73
+79
+83
+89
+97
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```

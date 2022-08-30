@@ -13,6 +13,7 @@ Recomendamos instalar la versión de escritorio.
 - [000-fizzbuzz.livemd](000-fizzbuzz.livemd)
 - [001-anagrama.livemd](001-anagrama.livemd)
 - [002-fibonacci.livemd](002-fibonacci.livemd)
+- [003-primos.livemd](003-primos.livemd)
 
 ## Nota
 
