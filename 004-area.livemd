@@ -1,0 +1,150 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 4 - Área Polígono
+
+## ÁREA DE UN POLÍGONO
+
+* Reto #4
+* Fecha publicación enunciado: 24/01/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge4.kt
+
+## Enunciado
+
+Crea UNA ÚNICA FUNCIÓN (importante que sólo sea una) que sea capaz de calcular y retornar el área de un polígono.
+
+* La función recibirá por parámetro sólo UN polígono a la vez.
+* Los polígonos soportados serán Triángulo, Cuadrado y Rectángulo.
+* Imprime el cálculo del área de un polígono de cada tipo.
+
+## Solución
+
+```elixir
+defmodule Square do
+  defstruct side: 0
+
+  def new(side) do
+    %__MODULE__{side: side}
+  end
+
+  def area(%__MODULE__{} = square) do
+    square.side * square.side
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Square, <<70, 79, 82, 49, 0, 0, 9, ...>>, {:area, 1}}
+```
+
+```elixir
+defmodule Rectangle do
+  defstruct length: 0, width: 0
+
+  def new(length, width) do
+    %__MODULE__{length: length, width: width}
+  end
+
+  def area(%__MODULE__{} = rect) do
+    rect.length * rect.width
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Rectangle, <<70, 79, 82, 49, 0, 0, 10, ...>>, {:area, 1}}
+```
+
+```elixir
+defmodule Triangle do
+  defstruct base: 0, height: 0
+
+  def new(base, height) do
+    %__MODULE__{base: base, height: height}
+  end
+
+  def area(%__MODULE__{} = triangle) do
+    triangle.base * triangle.height / 2
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Triangle, <<70, 79, 82, 49, 0, 0, 10, ...>>, {:area, 1}}
+```
+
+```elixir
+defmodule Polygone do
+  def area(%Square{} = poly) do
+    Square.area(poly)
+  end
+
+  def area(%Triangle{} = poly) do
+    Triangle.area(poly)
+  end
+
+  def area(%Rectangle{} = poly) do
+    Rectangle.area(poly)
+  end
+
+  def print(poly) do
+    "Area of #{poly.__struct__} is #{area(poly)}"
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Polygone, <<70, 79, 82, 49, 0, 0, 9, ...>>, {:print, 1}}
+```
+
+```elixir
+defmodule Solution do
+  def run(poly) do
+    Polygone.print(poly)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 5, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run(Triangle.new(10.0, 5.0))
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"Area of Elixir.Triangle is 25.0"
+```
+
+```elixir
+Solution.run(Rectangle.new(5.0, 7.0))
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"Area of Elixir.Rectangle is 35.0"
+```
+
+```elixir
+Solution.run(Square.new(4.0))
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"Area of Elixir.Square is 16.0"
+```

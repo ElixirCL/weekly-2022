@@ -14,6 +14,7 @@ Recomendamos instalar la versión de escritorio.
 - [001-anagrama.livemd](001-anagrama.livemd)
 - [002-fibonacci.livemd](002-fibonacci.livemd)
 - [003-primos.livemd](003-primos.livemd)
+- [004-poligonos.livemd](004-poligonos.livemd)
 
 ## Nota
 
