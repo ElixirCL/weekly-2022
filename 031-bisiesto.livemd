@@ -1,0 +1,30 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 31 - Años Bisiestos
+
+## AÑOS BISIESTOS
+
+* Reto #31
+* Fecha publicación enunciado: 01/08/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge31.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Crea una función que imprima los 30 próximos años bisiestos siguientes a uno dado.
+- Utiliza el menor número de líneas para resolver el ejercicio.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

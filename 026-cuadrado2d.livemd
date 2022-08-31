@@ -1,0 +1,31 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 26 - Cuadrado y Triángulo 2D
+
+## CUADRADO Y TRIÁNGULO 2D
+
+* Reto #26
+* Fecha publicación enunciado: 27/06/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge26.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Crea un programa que dibuje un cuadrado o un triángulo con asteriscos "*".
+- Indicaremos el tamaño del lado y si la figura a dibujar es una u otra.
+- EXTRA: ¿Eres capaz de dibujar más figuras?
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

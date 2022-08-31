@@ -1,0 +1,32 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 22 - Conjuntos
+
+## CONJUNTOS
+
+* Reto #22
+* Fecha publicación enunciado: 01/06/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge22.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Crea una función que reciba dos array, un booleano y retorne un array.
+- Si el booleano es verdadero buscará y retornará los elementos comunes de los dos array.
+- Si el booleano es falso buscará y retornará los elementos no comunes de los dos array.
+- No se pueden utilizar operaciones del lenguaje que lo resuelvan directamente.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

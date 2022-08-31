@@ -1,0 +1,42 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 17 - Carrera de Obstáculos
+
+## LA CARRERA DE OBSTÁCULOS
+
+* Reto #17
+* Fecha publicación enunciado: 25/04/22
+* Dificultad: MEDIA
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge17.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Crea una función que evalúe si un/a atleta ha superado correctamente una
+carrera de obstáculos.
+- La función recibirá dos parámetros:
+    - Un array que sólo puede contener String con las palabras "run" o "jump"
+    - Un String que represente la pista y sólo puede contener "_" (suelo) o "|" (valla)
+
+- La función imprimirá cómo ha finalizado la carrera:
+    - Si el/a atleta hace "run" en "_" (suelo) y "jump" en "|" (valla) será correcto y no
+      variará el símbolo de esa parte de la pista.
+    - Si hace "jump" en "_" (suelo), se variará la pista por "x".
+    - Si hace "run" en "|" (valla), se variará la pista por "/".
+
+- La función retornará un Boolean que indique si ha superado la carrera.
+Para ello tiene que realizar la opción correcta en cada tramo de la pista.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

@@ -1,0 +1,33 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 10 - Expresiones Equilibradas
+
+## EXPRESIONES EQUILIBRADAS
+
+* Reto #10
+* Fecha publicación enunciado: 07/03/22
+* Dificultad: MEDIA
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge10.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Crea un programa que comprueba si los paréntesis, llaves y corchetes de una expresión están equilibrados.
+- Equilibrado significa que estos delimitadores se abren y cieran en orden y de forma correcta.
+- Paréntesis, llaves y corchetes son igual de prioritarios. No hay uno más importante que otro.
+- Expresión balanceada: { [ a * ( c + d ) ] - 5 }
+- Expresión no balanceada: { a * ( c + d ) ] - 5 }
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

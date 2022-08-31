@@ -1,0 +1,29 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 13 - Factorial
+
+## FACTORIAL RECURSIVO
+
+* Reto #13
+* Fecha publicación enunciado: 28/03/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge13.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Escribe una función que calcule y retorne el factorial de un número dado de forma recursiva.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

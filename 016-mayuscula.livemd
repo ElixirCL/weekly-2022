@@ -1,0 +1,30 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 16 - Mayúscula
+
+## EN MAYÚSCULA
+
+* Reto #16
+* Fecha publicación enunciado: 18/04/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge16.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+Crea una función que reciba un String de cualquier tipo y se encargue de
+poner en mayúscula la primera letra de cada palabra.
+- No se pueden utilizar operaciones del lenguaje que lo resuelvan directamente.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

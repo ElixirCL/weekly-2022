@@ -1,0 +1,29 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 8 - Decimal a Binario
+
+## DECIMAL A BINARIO
+
+* Reto #8
+* Fecha publicación enunciado: 18/02/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge8.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Crea un programa se encargue de transformar un número decimal a binario sin utilizar funciones propias del lenguaje que lo hagan directamente.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

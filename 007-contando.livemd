@@ -1,0 +1,33 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 7 - Contando Palabras
+
+## CONTANDO PALABRAS
+
+* Reto #7
+* Fecha publicación enunciado: 14/02/22
+* Dificultad: MEDIA
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge7.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Crea un programa que cuente cuantas veces se repite cada palabra y que muestre el recuento final de todas ellas.
+
+* Los signos de puntuación no forman parte de la palabra.
+* Una palabra es la misma aunque aparezca en mayúsculas y minúsculas.
+* No se pueden utilizar funciones propias del lenguaje que lo resuelvan automáticamente.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

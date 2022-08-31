@@ -1,0 +1,29 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 24 - Iteration Master
+
+## ITERATION MASTER
+
+* Reto #24
+* Fecha publicación enunciado: 13/06/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge24.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Quiero contar del 1 al 100 de uno en uno (imprimiendo cada uno). ¿De cuántas maneras eres capaz de hacerlo? Crea el código para cada una de ellas.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

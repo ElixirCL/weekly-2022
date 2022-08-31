@@ -1,0 +1,33 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 25 - Piedra, Papel, Tijera
+
+## PIEDRA, PAPEL, TIJERA
+
+* Reto #25
+* Fecha publicación enunciado: 20/06/22
+* Dificultad: MEDIA
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge25.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Crea un programa que calcule quien gana más partidas al piedra, papel, tijera.
+- El resultado puede ser: "Player 1", "Player 2", "Tie" (empate)
+- La función recibe un listado que contiene pares, representando cada jugada.
+- El par puede contener combinaciones de "R" (piedra), "P" (papel) o "S" (tijera).
+- Ejemplo. Entrada: [("R","S"), ("S","R"), ("P","S")]. Resultado: "Player 2".
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

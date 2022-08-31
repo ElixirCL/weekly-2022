@@ -1,0 +1,39 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 30 - Marco de Palabras
+
+## MARCO DE PALABRAS
+
+* Reto #30
+* Fecha publicación enunciado: 26/07/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge30.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Crea una función que reciba un texto y muestre cada palabra en una línea, formando
+un marco rectangular de asteriscos.
+
+- ¿Qué te parece el reto? Se vería así:
+    **********
+    * ¿Qué   *
+    * te     *
+    * parece *
+    * el     *
+    * reto?  *
+    **********
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

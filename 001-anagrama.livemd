@@ -11,7 +11,7 @@
 
 <!-- livebook:{"break_markdown":true} -->
 
-### Enunciado
+## Enunciado
 
 Escribe una función que reciba dos palabras (String) y retorne verdadero o falso (Boolean) según sean o no anagramas.
 

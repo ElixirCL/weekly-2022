@@ -1,0 +1,29 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 19 - Conversor de Tiempo
+
+## CONVERSOR TIEMPO
+
+* Reto #19
+* Fecha publicación enunciado: 09/05/22
+* Dificultad: FACIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge19.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Crea una función que reciba días, horas, minutos y segundos (como enteros) y retorne su resultado en milisegundos.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

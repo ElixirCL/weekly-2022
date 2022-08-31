@@ -1,0 +1,29 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 32 - El Segundo
+
+## EL SEGUNDO
+
+* Reto #32
+* Fecha publicación enunciado: 08/08/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge32.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Dado un listado de números, encuentra el SEGUNDO más grande.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

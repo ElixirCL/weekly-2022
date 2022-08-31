@@ -1,0 +1,30 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 14 - Número Armstrong
+
+## ¿ES UN NÚMERO DE ARMSTRONG?
+
+* Reto #14
+* Fecha publicación enunciado: 04/04/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge14.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+## Enunciado
+
+Escribe una función que calcule si un número dado es un número de Amstrong (o también llamado narcisista).
+Si no conoces qué es un número de Armstrong, debes buscar información al respecto.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```
