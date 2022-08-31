@@ -97,15 +97,10 @@ defmodule Effectivity do
   @noteffective 0.5
 
   def get(attacker, opponent) do
-    case Enum.member?(opponent.vulnerable, attacker.id) do
-      true ->
-        @supereffective
-
-      _ ->
-        case Enum.member?(opponent.weakness, attacker.id) do
-          true -> @effective
-          _ -> @noteffective
-        end
+    cond do
+      Enum.member?(opponent.vulnerable, attacker.id) -> @supereffective
+      Enum.member?(opponent.weakness, attacker.id) -> @effective
+      true -> @noteffective
     end
   end
 end
