@@ -11,28 +11,179 @@
 
 <!-- livebook:{"break_markdown":true} -->
 
+
+
 ## Enunciado
 
 Crea un programa que calcule el daño de un ataque durante una batalla Pokémon.
 
-- La fórmula será la siguiente: daño = 50 * (ataque / defensa) * efectividad
-- Efectividad: x2 (súper efectivo), x1 (neutral), x0.5 (no es muy efectivo)
-- Sólo hay 4 tipos de Pokémon: Agua, Fuego, Planta y Eléctrico (buscar su efectividad)
-- El programa recibe los siguientes parámetros:
-  - Tipo del Pokémon atacante.
-  - Tipo del Pokémon defensor.
-  - Ataque: Entre 1 y 100.
-  - Defensa: Entre 1 y 100.
+* La fórmula será la siguiente: daño = 50 * (ataque / defensa) * efectividad
+* Efectividad: x2 (súper efectivo), x1 (neutral), x0.5 (no es muy efectivo)
+* Sólo hay 4 tipos de Pokémon: Agua, Fuego, Planta y Eléctrico (buscar su efectividad)
+* El programa recibe los siguientes parámetros:
+  * Tipo del Pokémon atacante.
+  * Tipo del Pokémon defensor.
+  * Ataque: Entre 1 y 100.
+  * Defensa: Entre 1 y 100.
 
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+defmodule TypeIds do
+  def water do
+    0
+  end
+
+  def fire do
+    1
+  end
+
+  def plant do
+    2
+  end
+
+  def electric do
+    3
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, TypeIds, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:electric, 0}}
+```
+
+```elixir
+defmodule Type do
+  defstruct ~w(id weakness vulnerable)a
+
+  def water do
+    %__MODULE__{
+      id: TypeIds.water(),
+      weakness: [TypeIds.water()],
+      vulnerable: [TypeIds.electric()]
+    }
+  end
+
+  def fire do
+    %__MODULE__{id: TypeIds.fire(), weakness: [TypeIds.fire()], vulnerable: [TypeIds.water()]}
+  end
+
+  def plant do
+    %__MODULE__{id: TypeIds.plant(), weakness: [TypeIds.plant()], vulnerable: [TypeIds.fire()]}
+  end
+
+  def electric do
+    %__MODULE__{
+      id: TypeIds.electric(),
+      weakness: [TypeIds.electric()],
+      vulnerable: [TypeIds.plant()]
+    }
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Type, <<70, 79, 82, 49, 0, 0, 11, ...>>, {:electric, 0}}
+```
+
+```elixir
+defmodule Effectivity do
+  @supereffective 2
+  @effective 1
+  @noteffective 0.5
+
+  def get(attacker, opponent) do
+    case Enum.member?(opponent.vulnerable, attacker.id) do
+      true ->
+        @supereffective
+
+      _ ->
+        case Enum.member?(opponent.weakness, attacker.id) do
+          true -> @effective
+          _ -> @noteffective
+        end
+    end
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Effectivity, <<70, 79, 82, 49, 0, 0, 8, ...>>, {:get, 2}}
+```
+
+```elixir
+defmodule Attack do
+  @amount 50
+  def damage(attacker, opponent) do
+    @amount * (attacker.power / opponent.power) * Effectivity.get(attacker.type, opponent.type)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Attack, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:damage, 2}}
+```
+
+```elixir
+defmodule Pokemon do
+  defstruct ~w(type power)a
+
+  def new(type, power) do
+    %__MODULE__{type: type, power: power}
+  end
+
+  def water(power) do
+    new(Type.water(), power)
+  end
+
+  def fire(power) do
+    new(Type.fire(), power)
+  end
+
+  def plant(power) do
+    new(Type.plant(), power)
+  end
+
+  def electric(power) do
+    new(Type.electric(), power)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Pokemon, <<70, 79, 82, 49, 0, 0, 11, ...>>, {:electric, 1}}
+```
+
+```elixir
+defmodule Solution do
+  def run() do
+    Attack.damage(Pokemon.water(10), Pokemon.plant(20))
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 0}}
+```
+
 ```elixir
 Solution.run()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+12.5
 ```
