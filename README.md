@@ -46,8 +46,8 @@ Recomendamos instalar la versión de escritorio.
 * **#33** - 15/08/22 - [`CICLO SEXAGENARIO CHINO`](033-sexagenario.livemd)
 * **#34** - 22/08/22 - [`LOS NÚMEROS PERDIDOS`](034-perdidos.livemd)
 * **#35** - 29/08/22 - [`BATALLA POKÉMON`](035-pokemon.livemd)
-* **#36** - 06/09/22 - `Publicación nuevo reto...`
-
+* **#36** - 06/09/22 - [`LOS ANILLOS DE PODER`](036-anillos.livemd)
+* **#37** - 14/09/22 - `Publicación nuevo reto...`
 
 ## Nota
 

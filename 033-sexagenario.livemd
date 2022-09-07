@@ -11,23 +11,111 @@
 
 <!-- livebook:{"break_markdown":true} -->
 
+
+
 ## Enunciado
 
 Crea un función, que dado un año, indique el elemento y animal correspondiente en el ciclo sexagenario del zodíaco chino.
-- Información: https://www.travelchinaguide.com/intro/astrology/60year-cycle.htm
-- El ciclo sexagenario se corresponde con la combinación de los elementos madera, fuego, tierra, metal, agua y los animales rata, buey, tigre, conejo, dragón, serpiente, caballo, oveja, mono, gallo, perro, cerdo (en este orden).
-- Cada elemento se repite dos años seguidos.
-- El último ciclo sexagenario comenzó en 1984 (Madera Rata).
+
+* Información:
+
+* * https://www.travelchinaguide.com/intro/astrology/60year-cycle.htm
+* * https://ytliu0.github.io/ChineseCalendar/sexagenary.html
+
+* El ciclo sexagenario se corresponde con la combinación de los elementos madera, fuego, tierra, metal, agua y los animales rata, buey, tigre, conejo, dragón, serpiente, caballo, oveja, mono, gallo, perro, cerdo (en este orden).
+* Cada elemento se repite dos años seguidos.
+* El último ciclo sexagenario comenzó en 1984 (Madera Rata).
 
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+# https://en.wikipedia.org/wiki/Heavenly_Stems
+defmodule Stem do
+  @stems [
+    ["Jiǎ (甲)", "Este 東", "Madera 木", "Yang 陽"],
+    ["Yǐ (乙)", "Este 東", "Madera 木", "Yin 陰"],
+    ["Bǐng (丙)", "Sur 南", "Fuego 火", "Yang 陽"],
+    ["Dīng (丁)", "Sur 南", "Fuego 火", "Yin 陰"],
+    ["Wù (戊)", "Centro 中", "Tierra 土", "Yang 陽"],
+    ["Jǐ (己)", "Centro 中", "Tierra 土", "Yin 陰"],
+    ["Gēng (庚)", "Oeste 西", "Metal 金", "Yang 陽"],
+    ["Xīn (辛)", "Oeste 西", "Metal 金", "Yin 陰"],
+    ["Rén (壬)", "Norte 北", "Agua 水", "Yang 陽"],
+    ["Guǐ (癸)", "Norte 北", "Agua 水", "Yin 陰"]
+  ]
+
+  def id(year) do
+    rem(year + 6, 10)
+  end
+
+  def for(year) do
+    Enum.at(@stems, id(year))
+    |> Enum.join(" ")
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Stem, <<70, 79, 82, 49, 0, 0, 9, ...>>, {:for, 1}}
+```
+
 ```elixir
-Solution.run()
+# https://en.wikipedia.org/wiki/Earthly_Branches
+defmodule Branch do
+  @branches [
+    ["Zǐ (子)", "Rata"],
+    ["Chǒu (丑)", "Buey"],
+    ["Yín (寅)", "Tigre"],
+    ["Mǎo (卯)", "Conejo"],
+    ["Chén (辰)", "Dragón"],
+    ["Sì (巳)", "Serpiente"],
+    ["Wǔ (午)", "Caballo"],
+    ["Wèi (未)", "Oveja"],
+    ["Shēn (申)", "Mono"],
+    ["Yǒu (酉)", "Gallo"],
+    ["Xū (戌)", "Perro"],
+    ["Hài (亥)", "Cerdo"]
+  ]
+
+  def id(year) do
+    rem(year + 8, 12)
+  end
+
+  def for(year) do
+    Enum.at(@branches, id(year))
+    |> Enum.join(" ")
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Branch, <<70, 79, 82, 49, 0, 0, 9, ...>>, {:for, 1}}
+```
+
+```elixir
+defmodule Solution do
+  def run(year) do
+    "#{year}: #{Stem.for(year)} - #{Branch.for(year)}"
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run(1989)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"1989: Jǐ (己) Centro 中 Tierra 土 Yin 陰 - Sì (巳) Serpiente"
 ```

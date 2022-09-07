@@ -1,0 +1,160 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 36 - Anillos de Poder
+
+## LOS ANILLOS DE PODER
+
+* Reto #36
+* Fecha publicación enunciado: 06/09/22
+* Dificultad: Media
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge36.kt
+
+<!-- livebook:{"break_markdown":true} -->
+
+
+
+## Enunciado
+
+¡La Tierra Media está en guerra! En ella lucharán razas leales a Sauron
+contra otras bondadosas que no quieren que el mal reine sobre sus tierras.
+Cada raza tiene asociado un "valor" entre 1 y 5:
+
+* Razas bondadosas: Pelosos (1), Sureños buenos (2), Enanos (3), Númenóreanos (4), Elfos (5)
+* Razas malvadas: Sureños malos (2), Orcos (2), Goblins (2), Huargos (3), Trolls (5)
+  Crea un programa que calcule el resultado de la batalla entre los 2 tipos de ejércitos:
+* El resultado puede ser que gane el bien, el mal, o exista un empate. Dependiendo de la
+  suma del valor del ejército y el número de integrantes.
+* Cada ejército puede estar compuesto por un número de integrantes variable de cada raza.
+* Tienes total libertad para modelar los datos del ejercicio.
+
+Ej: 1 Peloso pierde contra 1 Orco, 2 Pelosos empatan contra 1 Orco, 3 Pelosos ganan a 1 Orco.
+
+## Solución
+
+```elixir
+defmodule Good do
+  def peloso do
+    1
+  end
+
+  def sur do
+    2
+  end
+
+  def enano do
+    3
+  end
+
+  def numen do
+    4
+  end
+
+  def elfo do
+    5
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Good, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:elfo, 0}}
+```
+
+```elixir
+defmodule Evil do
+  def sur do
+    -1
+  end
+
+  def orco do
+    -2
+  end
+
+  def goblin do
+    -3
+  end
+
+  def huargo do
+    -4
+  end
+
+  def troll do
+    -5
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Evil, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:troll, 0}}
+```
+
+```elixir
+defmodule Army do
+  def choose(type, amount) do
+    type * amount
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Army, <<70, 79, 82, 49, 0, 0, 5, ...>>, {:choose, 2}}
+```
+
+```elixir
+defmodule Battle do
+  def begin(characters) do
+    case Enum.sum(characters) do
+      0 -> "Empate"
+      result when result > 0 -> "Gana el Bien"
+      _ -> "Gana el Mal"
+    end
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Battle, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:begin, 1}}
+```
+
+```elixir
+Battle.begin([
+  Army.choose(Good.sur(), 2),
+  Army.choose(Evil.orco(), 3)
+])
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"Gana el Mal"
+```
+
+```elixir
+Battle.begin([
+  Good.elfo(),
+  Evil.troll()
+])
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"Empate"
+```
+
+```elixir
+Battle.begin([Good.elfo(), Evil.orco()])
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"Gana el Bien"
+```

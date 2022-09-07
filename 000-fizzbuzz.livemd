@@ -11,6 +11,8 @@
 
 <!-- livebook:{"break_markdown":true} -->
 
+
+
 ## Enunciado
 
 Escribe un programa que muestre por consola (con un print) los números de 1 a 100 (ambos incluidos y con un salto de línea entre cada impresión), sustituyendo los siguientes:
@@ -61,6 +63,8 @@ end
 ```
 {:module, Solution, <<70, 79, 82, 49, 0, 0, 8, ...>>, {:run, 1}}
 ```
+
+
 
 ```elixir
 Solution.run(1..100)
