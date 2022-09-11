@@ -11,23 +11,162 @@
 
 <!-- livebook:{"break_markdown":true} -->
 
+
+
 ## Enunciado
 
 Crea un programa que calcule quien gana más partidas al piedra, papel, tijera.
-- El resultado puede ser: "Player 1", "Player 2", "Tie" (empate)
-- La función recibe un listado que contiene pares, representando cada jugada.
-- El par puede contener combinaciones de "R" (piedra), "P" (papel) o "S" (tijera).
-- Ejemplo. Entrada: [("R","S"), ("S","R"), ("P","S")]. Resultado: "Player 2".
+
+* El resultado puede ser: "Player 1", "Player 2", "Tie" (empate)
+* La función recibe un listado que contiene pares, representando cada jugada.
+* El par puede contener combinaciones de "R" (piedra), "P" (papel) o "S" (tijera).
+* Ejemplo. Entrada: [("R","S"), ("S","R"), ("P","S")]. Resultado: "Player 2".
 
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+defmodule GameState do
+  def tie do
+    0
+  end
+
+  def first_wins do
+    1
+  end
+
+  def second_wins do
+    2
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, GameState, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:second_wins, 0}}
+```
+
 ```elixir
-Solution.run()
+defmodule Choice do
+  @rock "R"
+  @paper "P"
+  @scissor "S"
+
+  @rock_id 1
+  @paper_id 2
+  @scissor_id 3
+
+  def rock do
+    "R"
+  end
+
+  def paper do
+    "P"
+  end
+
+  def scissor do
+    "S"
+  end
+
+  def make(word) do
+    case word do
+      @rock -> @rock_id
+      @paper -> @paper_id
+      @scissor -> @scissor_id
+    end
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Choice, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:make, 1}}
+```
+
+```elixir
+# See https://dev.to/dnovais/refactoring-the-game-j7a
+defmodule Game do
+  def play({player1, player2}) do
+    player1_choice = Choice.make(player1)
+    player2_choice = Choice.make(player2)
+    # rem() cannot be used due to use floating point division
+    # we need integer division
+    case Integer.mod(player1_choice - player2_choice, 3) do
+      0 -> GameState.tie()
+      1 -> GameState.first_wins()
+      _ -> GameState.second_wins()
+    end
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Game, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:play, 1}}
+```
+
+```elixir
+defmodule Solution do
+  def run(iterations) do
+    results =
+      iterations
+      |> Enum.map(fn iter ->
+        Game.play(iter)
+      end)
+
+    first_wins =
+      results
+      |> Enum.filter(fn item -> item == GameState.first_wins() end)
+      |> Enum.count()
+
+    second_wins =
+      results
+      |> Enum.filter(fn item -> item == GameState.second_wins() end)
+      |> Enum.count()
+
+    cond do
+      first_wins > second_wins -> {:ok, "Player 1 Wins", first_wins, second_wins, results}
+      second_wins > first_wins -> {:ok, "Player 2 Wins", first_wins, second_wins, results}
+      true -> {:ok, "Tie", first_wins, second_wins, results}
+    end
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 9, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run([{Choice.rock(), Choice.scissor()}, {"R", "S"}, {"P", "R"}])
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:ok, "Player 1 Wins", 3, 0, [1, 1, 1]}
+```
+
+```elixir
+Solution.run([{"S", "S"}, {"S", "S"}, {"R", "P"}])
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:ok, "Player 2 Wins", 0, 1, [0, 0, 2]}
+```
+
+```elixir
+Solution.run([{"S", "R"}, {"P", "R"}, {"P", "P"}])
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:ok, "Tie", 1, 1, [2, 1, 0]}
 ```

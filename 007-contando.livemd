@@ -11,6 +11,8 @@
 
 <!-- livebook:{"break_markdown":true} -->
 
+
+
 ## Enunciado
 
 Crea un programa que cuente cuantas veces se repite cada palabra y que muestre el recuento final de todas ellas.
@@ -22,12 +24,46 @@ Crea un programa que cuente cuantas veces se repite cada palabra y que muestre e
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+defmodule WordCounter do
+  def count(string) do
+    string
+    |> String.downcase()
+    |> String.replace([".", ";", ",", "?", "¿", "!", "¡", ":", "'", "\""], "")
+    |> String.split()
+    |> Enum.reduce(%{}, fn word, acc ->
+      count = Map.get(acc, word, 0) + 1
+      Map.put(acc, word, count)
+    end)
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, WordCounter, <<70, 79, 82, 49, 0, 0, 8, ...>>, {:count, 1}}
+```
+
+```elixir
+defmodule Solution do
+  def run() do
+    WordCounter.count("Hola, mundo hola mundo !! hola hola !!! mundo ;; mundo?")
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 0}}
+```
+
 ```elixir
 Solution.run()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+%{"hola" => 4, "mundo" => 4}
 ```

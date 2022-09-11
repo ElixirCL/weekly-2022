@@ -11,23 +11,140 @@
 
 <!-- livebook:{"break_markdown":true} -->
 
+
+
 ## Enunciado
 
 Crea un programa que sea capaz de transformar texto natural a código morse y viceversa.
 
-- Debe detectar automáticamente de qué tipo se trata y realizar la conversión.
-- En morse se soporta raya "—", punto ".", un espacio " " entre letras o símbolos y dos espacios entre palabras "  ".
-- El alfabeto morse soportado será el mostrado en https://es.wikipedia.org/wiki/Código_morse.
+* Debe detectar automáticamente de qué tipo se trata y realizar la conversión.
+* En morse se soporta raya "—", punto ".", un espacio " " entre letras o símbolos y dos espacios entre palabras "  ".
+* El alfabeto morse soportado será el mostrado en https://es.wikipedia.org/wiki/Código_morse.
 
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+defmodule Morse do
+  @table %{
+    "A" => "·—",
+    "B" => "—···",
+    "C" => "—·—·",
+    "CH" => "————",
+    "D" => "—··",
+    "E" => "·",
+    "F" => "··—·",
+    "G" => "——·",
+    "H" => "····",
+    "I" => "··",
+    "J" => "·———",
+    "K" => "—·—",
+    "L" => "·—··",
+    "M" => "——",
+    "N" => "—·",
+    "Ñ" => "——·——",
+    "O" => "———",
+    "P" => "·——·",
+    "Q" => "——·—",
+    "R" => "·—·",
+    "S" => "···",
+    "T" => "—",
+    "U" => "··—",
+    "V" => "···—",
+    "W" => "·——",
+    "X" => "—··—",
+    "Y" => "—·——",
+    "Z" => "——··",
+    "0" => "—————",
+    "1" => "·————",
+    "2" => "··———",
+    "3" => "···——",
+    "4" => "····—",
+    "5" => "·····",
+    "6" => "—····",
+    "7" => "——···",
+    "8" => "———··",
+    "9" => "————·",
+    "." => "·—·—·—",
+    "," => "——··——",
+    "?" => "··——··",
+    "\"" => "·—··—·",
+    "/" => "—··—·",
+    " " => "  "
+  }
+
+  def to(message) do
+    message
+    |> String.upcase()
+    |> String.graphemes()
+    |> Enum.reduce([], fn letter, acc ->
+      acc ++ [Map.get(@table, letter, "  ")]
+    end)
+    |> Enum.join(" ")
+  end
+
+  def from(message) do
+    inverse_table =
+      Enum.reduce(Map.keys(@table), %{}, fn key, acc ->
+        Map.put(acc, Map.get(@table, key), key)
+      end)
+
+    message
+    |> String.split("  ")
+    |> Enum.map(fn word ->
+      String.split(word, " ")
+      |> Enum.map(fn letter ->
+        Map.get(inverse_table, letter, " ")
+      end)
+      |> Enum.join()
+    end)
+    |> Enum.join()
+  end
+
+  def translate(message) do
+    cond do
+      String.match?(message, ~r/[a-zA-Z0-9]/) -> to(message)
+      true -> from(message)
+    end
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Morse, <<70, 79, 82, 49, 0, 0, 16, ...>>, {:translate, 1}}
+```
+
 ```elixir
-Solution.run()
+defmodule Solution do
+  def run(message) do
+    Morse.translate(message)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run("Hola Mundo")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"···· ——— ·—·· ·—    —— ··— —· —·· ———"
+```
+
+```elixir
+Solution.run("···· ——— ·—·· ·—    —— ··— —· —·· ———")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"HOLA MUNDO"
 ```

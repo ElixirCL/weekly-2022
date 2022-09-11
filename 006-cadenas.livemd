@@ -11,6 +11,8 @@
 
 <!-- livebook:{"break_markdown":true} -->
 
+
+
 ## Enunciado
 
 Crea un programa que invierta el orden de una cadena de texto sin usar funciones propias del lenguaje que lo hagan de forma automática.
@@ -19,12 +21,44 @@ Si le pasamos "Hola mundo" nos retornaría "odnum aloH".
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+defmodule Reverse do
+  def chars(string) do
+    string
+    |> String.to_charlist()
+    |> Enum.reduce([], fn letter, acc ->
+      [letter | acc]
+    end)
+    |> List.to_string()
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Reverse, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:chars, 1}}
+```
+
 ```elixir
-Solution.run()
+defmodule Solution do
+  def run(string) do
+    Reverse.chars(string)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run("Hola mundo")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"odnum aloH"
 ```

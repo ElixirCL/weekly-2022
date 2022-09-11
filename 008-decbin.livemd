@@ -11,6 +11,8 @@
 
 <!-- livebook:{"break_markdown":true} -->
 
+
+
 ## Enunciado
 
 Crea un programa se encargue de transformar un número decimal a binario sin utilizar funciones propias del lenguaje que lo hagan directamente.
@@ -18,12 +20,44 @@ Crea un programa se encargue de transformar un número decimal a binario sin uti
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+# See https://www.geeksforgeeks.org/decimal-binary-number-using-recursion/
+defmodule Convert do
+  def binary(dec) when dec == 0 do
+    0
+  end
+
+  def binary(dec) do
+    rem(dec, 2) + 10 * binary(div(dec, 2))
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Convert, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:binary, 1}}
+```
+
 ```elixir
-Solution.run()
+defmodule Solution do
+  def run(number) do
+    Convert.binary(number)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run(420) == 110_100_100
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
 ```
