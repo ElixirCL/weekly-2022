@@ -9,8 +9,6 @@
 * Dificultad: FÁCIL
 * Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge14.kt
 
-<!-- livebook:{"break_markdown":true} -->
-
 ## Enunciado
 
 Escribe una función que calcule si un número dado es un número de Amstrong (o también llamado narcisista).
@@ -19,12 +17,64 @@ Si no conoces qué es un número de Armstrong, debes buscar información al resp
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+defmodule Armstrong do
+  def is?(number) do
+    normalized = abs(number)
+
+    chars =
+      to_string(normalized)
+      |> String.graphemes()
+
+    power = Enum.count(chars)
+
+    sum =
+      Enum.map(chars, fn num ->
+        String.to_integer(num)
+        |> Integer.pow(power)
+      end)
+      |> Enum.sum()
+
+    normalized == sum
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Armstrong, <<70, 79, 82, 49, 0, 0, 8, ...>>, {:is?, 1}}
+```
+
 ```elixir
-Solution.run()
+defmodule Solution do
+  def run(number) do
+    Armstrong.is?(number)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run(-371)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+```
+
+```elixir
+Solution.run(371)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
 ```

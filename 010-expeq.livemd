@@ -9,25 +9,100 @@
 * Dificultad: MEDIA
 * Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge10.kt
 
-<!-- livebook:{"break_markdown":true} -->
-
 ## Enunciado
 
 Crea un programa que comprueba si los paréntesis, llaves y corchetes de una expresión están equilibrados.
-- Equilibrado significa que estos delimitadores se abren y cieran en orden y de forma correcta.
-- Paréntesis, llaves y corchetes son igual de prioritarios. No hay uno más importante que otro.
-- Expresión balanceada: { [ a * ( c + d ) ] - 5 }
-- Expresión no balanceada: { a * ( c + d ) ] - 5 }
+
+* Equilibrado significa que estos delimitadores se abren y cierran en orden y de forma correcta.
+* Paréntesis, llaves y corchetes son igual de prioritarios. No hay uno más importante que otro.
+* Expresión balanceada: { [ a * ( c + d ) ] - 5 }
+* Expresión no balanceada: { a * ( c + d ) ] - 5 }
 
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+defmodule Balanced do
+  @symbols %{
+    "{" => "}",
+    "[" => "]",
+    "(" => ")"
+  }
+
+  defp pop(stack, item) do
+    first = Map.get(@symbols, List.first(stack))
+
+    case item == first do
+      true ->
+        {_top, rest} = List.pop_at(stack, 0)
+        rest
+
+      false ->
+        [:error]
+    end
+  end
+
+  def is?(string) do
+    string
+    |> String.graphemes()
+    |> Enum.filter(fn item -> item in (Map.keys(@symbols) ++ Map.values(@symbols)) end)
+    |> Enum.reduce([], fn item, stack ->
+      cond do
+        item in Map.keys(@symbols) -> [item | stack]
+        item in Map.values(@symbols) -> stack |> pop(item)
+        true -> stack
+      end
+    end)
+    |> Enum.count() == 0
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Balanced, <<70, 79, 82, 49, 0, 0, 11, ...>>, {:is?, 1}}
+```
+
 ```elixir
-Solution.run()
+defmodule Solution do
+  def run(string) do
+    Balanced.is?(string)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run("[ a * ( c + d ) ] - 5}")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+false
+```
+
+```elixir
+Solution.run("{ ] a * ( c + d ) + ( 2 - 3 )[ - 5 }")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+false
+```
+
+```elixir
+Solution.run("{ [ a * ( c + d ) ] - 5 }")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
 ```

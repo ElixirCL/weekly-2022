@@ -9,34 +9,147 @@
 * Dificultad: MEDIA
 * Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge17.kt
 
-<!-- livebook:{"break_markdown":true} -->
-
 ## Enunciado
 
 Crea una función que evalúe si un/a atleta ha superado correctamente una
 carrera de obstáculos.
-- La función recibirá dos parámetros:
-    - Un array que sólo puede contener String con las palabras "run" o "jump"
-    - Un String que represente la pista y sólo puede contener "_" (suelo) o "|" (valla)
 
-- La función imprimirá cómo ha finalizado la carrera:
-    - Si el/a atleta hace "run" en "_" (suelo) y "jump" en "|" (valla) será correcto y no
-      variará el símbolo de esa parte de la pista.
-    - Si hace "jump" en "_" (suelo), se variará la pista por "x".
-    - Si hace "run" en "|" (valla), se variará la pista por "/".
+* La función recibirá dos parámetros:
 
-- La función retornará un Boolean que indique si ha superado la carrera.
-Para ello tiene que realizar la opción correcta en cada tramo de la pista.
+  * Un array que sólo puede contener String con las palabras "run" o "jump"
+  * Un String que represente la pista y sólo puede contener "_" (suelo) o "|" (valla)
+
+* La función imprimirá cómo ha finalizado la carrera:
+
+  * Si el/a atleta hace "run" en "_" (suelo) y "jump" en "|" (valla) será correcto y no
+    variará el símbolo de esa parte de la pista.
+  * Si hace "jump" en "_" (suelo), se variará la pista por "x".
+  * Si hace "run" en "|" (valla), se variará la pista por "/".
+
+* La función retornará un Boolean que indique si ha superado la carrera.
+  Para ello tiene que realizar la opción correcta en cada tramo de la pista.
 
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+defmodule Runner do
+  def check("run", "_") do
+    "_"
+  end
+
+  def check("jump", "|") do
+    "|"
+  end
+
+  def check("run", _) do
+    "x"
+  end
+
+  def check("jump", _) do
+    "/"
+  end
+
+  def run(steps, stage) do
+    blocks = String.graphemes(stage)
+
+    course =
+      steps
+      |> Enum.with_index()
+      |> Enum.map(fn {step, index} ->
+        check(step, Enum.at(blocks, index))
+      end)
+      |> Enum.join()
+
+    course == stage
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Runner, <<70, 79, 82, 49, 0, 0, 9, ...>>, {:run, 2}}
+```
+
 ```elixir
-Solution.run()
+defmodule Athlete do
+  def run() do
+    "run"
+  end
+
+  def jump() do
+    "jump"
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Athlete, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:jump, 0}}
+```
+
+```elixir
+defmodule Solution do
+  def run(steps, stage) do
+    Runner.run(steps, stage)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 2}}
+```
+
+```elixir
+Solution.run(
+  [
+    Athlete.run(),
+    Athlete.jump(),
+    Athlete.run(),
+    Athlete.jump(),
+    Athlete.run(),
+    Athlete.run(),
+    Athlete.run()
+  ],
+  "_|_|___"
+)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+```
+
+```elixir
+Solution.run(["run", "jump"], "_|")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+```
+
+```elixir
+Solution.run(["run", "jump", "run"], "_")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+false
+```
+
+```elixir
+Solution.run(["run", "jump", "run"], "_|")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+false
 ```

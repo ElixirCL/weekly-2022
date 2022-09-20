@@ -9,8 +9,6 @@
 * Dificultad: FÁCIL
 * Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge13.kt
 
-<!-- livebook:{"break_markdown":true} -->
-
 ## Enunciado
 
 Escribe una función que calcule y retorne el factorial de un número dado de forma recursiva.
@@ -18,12 +16,73 @@ Escribe una función que calcule y retorne el factorial de un número dado de fo
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+defmodule Factorial do
+  def calc(0) do
+    1
+  end
+
+  def calc(num) do
+    num * calc(num - 1)
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Factorial, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:calc, 1}}
+```
+
 ```elixir
-Solution.run()
+defmodule Solution do
+  def run(num) do
+    Factorial.calc(num)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run(12)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+479001600
+```
+
+```elixir
+Solution.run(3)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+6
+```
+
+```elixir
+Solution.run(2)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+2
+```
+
+```elixir
+Solution.run(1)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+1
 ```

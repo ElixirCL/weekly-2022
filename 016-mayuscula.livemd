@@ -9,22 +9,57 @@
 * Dificultad: FÁCIL
 * Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge16.kt
 
-<!-- livebook:{"break_markdown":true} -->
-
 ## Enunciado
+
 Crea una función que reciba un String de cualquier tipo y se encargue de
 poner en mayúscula la primera letra de cada palabra.
-- No se pueden utilizar operaciones del lenguaje que lo resuelvan directamente.
+
+* No se pueden utilizar operaciones del lenguaje que lo resuelvan directamente.
 
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+defmodule Titlecase do
+  def apply(string) do
+    string
+    |> String.split()
+    |> Enum.map(fn word ->
+      [first | rest] = String.graphemes(word)
+
+      [String.upcase(first) | rest]
+      |> Enum.join()
+    end)
+    |> Enum.join(" ")
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Titlecase, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:apply, 1}}
+```
+
 ```elixir
-Solution.run()
+defmodule Solution do
+  def run(message) do
+    Titlecase.apply(message)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run("hola elixir, que bonito eres")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"Hola Elixir, Que Bonito Eres"
 ```

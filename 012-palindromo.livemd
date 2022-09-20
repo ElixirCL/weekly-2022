@@ -9,11 +9,10 @@
 * Dificultad: MEDIA
 * Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge12.kt
 
-<!-- livebook:{"break_markdown":true} -->
-
 ## Enunciado
 
 Escribe una función que reciba un texto y retorne verdadero o falso (Boolean) según sean o no palíndromos.
+
 * Un Palíndromo es una palabra o expresión que es igual si se lee de izquierda a derecha que de derecha a izquierda.
 * NO se tienen en cuenta los espacios, signos de puntuación y tildes.
 * Ejemplo: Ana lleva al oso la avellana.
@@ -21,12 +20,54 @@ Escribe una función que reciba un texto y retorne verdadero o falso (Boolean) s
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+defmodule Palindrome do
+  def is?(string) do
+    new_string =
+      string
+      |> String.replace([" ", ",", ".", "!", "¡", "?", "¿", ":", ";"], "")
+      |> String.downcase()
+
+    new_string == String.reverse(new_string)
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Palindrome, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:is?, 1}}
+```
+
 ```elixir
-Solution.run()
+defmodule Solution do
+  def run(string) do
+    Palindrome.is?(string)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run("oro")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+```
+
+```elixir
+Solution.run("Ana lleva al oso la avellana.")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
 ```

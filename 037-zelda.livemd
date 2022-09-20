@@ -1,0 +1,188 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 37 - The Legend of Zelda
+
+## LOS LANZAMIENTOS DE "THE LEGEND OF ZELDA"
+
+* Reto #37
+* Fecha publicación enunciado: 14/09/22
+* Dificultad: MEDIA
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge37.kt
+
+## Enunciado
+
+¡Han anunciado un nuevo "The Legend of Zelda"! Se llamará "Tears of the Kingdom"
+y se lanzará el 12 de mayo de 2023.
+
+Pero, ¿recuerdas cuánto tiempo ha pasado entre los distintos "The Legend of Zelda" de la historia?
+Crea un programa que calcule cuántos años y días hay entre 2 juegos de Zelda que tú selecciones.
+
+* Debes buscar cada uno de los títulos y su día de lanzamiento (si no encuentras el día exacto
+  puedes usar el mes, o incluso inventártelo)
+
+## Solución
+
+```elixir
+# https://es.wikipedia.org/wiki/Anexo:Videojuegos_de_The_Legend_of_Zelda
+defmodule Game do
+  defstruct ~w(title date)a
+
+  def zelda do
+    %Game{title: "The Legend of Zelda", date: Date.new!(1986, 02, 21)}
+  end
+
+  def zelda2 do
+    %Game{title: "Zelda II: The Adventure of Link", date: Date.new!(1987, 01, 14)}
+  end
+
+  def zelda3 do
+    %Game{title: "The Legend of Zelda: A Link to the Past", date: Date.new!(1991, 11, 21)}
+  end
+
+  def zelda4 do
+    %Game{title: "The Legend of Zelda: Link's Awakening", date: Date.new!(1993, 06, 06)}
+  end
+
+  def zelda5 do
+    %Game{title: "The Legend of Zelda: Ocarina of Time", date: Date.new!(1998, 11, 21)}
+  end
+
+  def zelda6 do
+    %Game{title: "The Legend of Zelda: Majora's Mask", date: Date.new!(2000, 04, 27)}
+  end
+
+  def zelda7 do
+    %Game{
+      title: "The Legend of Zelda: Oracle of Seasons/Oracle of Ages",
+      date: Date.new!(2001, 02, 27)
+    }
+  end
+
+  def zelda8 do
+    %Game{title: "The Legend of Zelda: The Wind Waker", date: Date.new!(2002, 12, 13)}
+  end
+
+  def zelda9 do
+    %Game{title: "The Legend of Zelda: A Link to the Past", date: Date.new!(1991, 11, 21)}
+  end
+
+  def zelda10 do
+    %Game{
+      title: "The Legend of Zelda: A Link to the Past/Four Swords",
+      date: Date.new!(2003, 03, 14)
+    }
+  end
+
+  def zelda11 do
+    %Game{title: "The Legend of Zelda: Four Swords Adventures", date: Date.new!(2004, 03, 18)}
+  end
+
+  def zelda12 do
+    %Game{title: "The Legend of Zelda: The Minish Cap", date: Date.new!(2004, 11, 04)}
+  end
+
+  def zelda13 do
+    %Game{title: "The Legend of Zelda: Twilight Princess", date: Date.new!(2006, 12, 02)}
+  end
+
+  def zelda14 do
+    %Game{title: "The Legend of Zelda: Phantom Hourglass", date: Date.new!(2007, 06, 23)}
+  end
+
+  def zelda15 do
+    %Game{title: "The Legend of Zelda: Spirit Tracks", date: Date.new!(2009, 12, 23)}
+  end
+
+  def zelda16 do
+    %Game{title: "The Legend of Zelda: Skyward Sword", date: Date.new!(2011, 11, 23)}
+  end
+
+  def zelda17 do
+    %Game{title: "The Legend of Zelda: A Link Between Worlds", date: Date.new!(2013, 12, 26)}
+  end
+
+  def zelda18 do
+    %Game{title: "The Legend of Zelda: Tri Force Heroes", date: Date.new!(2015, 10, 22)}
+  end
+
+  def zelda19 do
+    %Game{title: "The Legend of Zelda: Breath of the Wild", date: Date.new!(2017, 03, 03)}
+  end
+
+  def zelda20 do
+    %Game{title: "The Legend of Zelda: Tears of the Kingdom", date: Date.new!(2023, 05, 12)}
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Game, <<70, 79, 82, 49, 0, 0, 24, ...>>, {:zelda20, 0}}
+```
+
+```elixir
+defmodule Compare do
+  def dates(%Game{} = game1, %Game{} = game2) do
+    Date.diff(game1.date, game2.date)
+    |> abs()
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Compare, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:dates, 2}}
+```
+
+```elixir
+defmodule Stats do
+  defstruct ~w(years months days)a
+
+  def from(days) do
+    years = div(days, 365)
+    # 356 * 12
+    months = div(days, 4380)
+    # 356 * 12 * 30
+    days = div(days, 131_400)
+    %Stats{years: years, months: months, days: days}
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Stats, <<70, 79, 82, 49, 0, 0, 9, ...>>, {:from, 1}}
+```
+
+```elixir
+defmodule Solution do
+  defp string(stats, game1, game2) do
+    "Desde '#{game1.title}' hasta '#{game2.title}' han pasado #{stats.years} años #{stats.months} meses y #{stats.days} días."
+  end
+
+  def run(%Game{} = game1, %Game{} = game2) do
+    Compare.dates(game1, game2)
+    |> Stats.from()
+    |> string(game1, game2)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 10, ...>>, {:run, 2}}
+```
+
+```elixir
+Solution.run(Game.zelda(), Game.zelda20())
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"Desde 'The Legend of Zelda' hasta 'The Legend of Zelda: Tears of the Kingdom' han pasado 37 años 3 meses y 0 días."
+```

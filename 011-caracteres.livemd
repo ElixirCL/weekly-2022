@@ -9,23 +9,37 @@
 * Dificultad: FÁCIL
 * Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge11.kt
 
-<!-- livebook:{"break_markdown":true} -->
-
 ## Enunciado
 
 Crea una función que reciba dos cadenas como parámetro (str1, str2) e imprima otras dos cadenas como salida (out1, out2).
-- out1 contendrá todos los caracteres presentes en la str1 pero NO estén presentes en str2.
-- out2 contendrá todos los caracteres presentes en la str2 pero NO estén presentes en str1.
+
+* out1 contendrá todos los caracteres presentes en la str1 pero NO estén presentes en str2.
+* out2 contendrá todos los caracteres presentes en la str2 pero NO estén presentes en str1.
 
 ## Solución
 
 ```elixir
 defmodule Solution do
-  def run() do
+  def run(string, string2) do
+    new_string = String.replace(string, String.graphemes(string2), "")
+    new_string2 = String.replace(string2, String.graphemes(string), "")
+    {new_string, new_string2}
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 2}}
+```
+
 ```elixir
-Solution.run()
+Solution.run("abcfg", "abcde")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{"fg", "de"}
 ```

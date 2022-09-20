@@ -9,25 +9,43 @@
 * Dificultad: DIFÍCIL
 * Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge15.kt
 
-<!-- livebook:{"break_markdown":true} -->
-
 ## Enunciado
 
 Crea una función que calcule y retorne cuántos días hay entre dos cadenas de texto que representen fechas.
-- Una cadena de texto que representa una fecha tiene el formato "dd/MM/yyyy".
-- La función recibirá dos String y retornará un Int.
-- La diferencia en días será absoluta (no importa el orden de las fechas).
-- Si una de las dos cadenas de texto no representa una fecha correcta se lanzará una excepción.
+
+* Una cadena de texto que representa una fecha tiene el formato "dd/MM/yyyy".
+* La función recibirá dos String y retornará un Int.
+* La diferencia en días será absoluta (no importa el orden de las fechas).
+* Si una de las dos cadenas de texto no representa una fecha correcta se lanzará una excepción.
 
 ## Solución
 
 ```elixir
 defmodule Solution do
-  def run() do
+  def run(date1_string, date2_string) do
+    [dd, mm, yyyy] = String.split(date1_string, "/")
+    {:ok, date1} = Date.from_iso8601("#{yyyy}-#{mm}-#{dd}")
+
+    [dd, mm, yyyy] = String.split(date2_string, "/")
+    {:ok, date2} = Date.from_iso8601("#{yyyy}-#{mm}-#{dd}")
+
+    abs(Date.diff(date1, date2))
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 9, ...>>, {:run, 2}}
+```
+
 ```elixir
-Solution.run()
+Solution.run("18/10/1989", "18/10/2022")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+12053
 ```
