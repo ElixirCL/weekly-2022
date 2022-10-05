@@ -1,0 +1,47 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 038 - Binario a Decimal
+
+## BINARIO A DECIMAL
+
+* Reto #38
+* Fecha publicación enunciado: 19/09/22
+* Dificultad: MEDIA
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge38.kt
+
+## Enunciado
+
+Crea un programa se encargue de transformar un número binario a decimal sin utilizar
+funciones propias del lenguaje que lo hagan directamente.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run(number) do
+    to_string(number)
+    |> String.graphemes()
+    |> Enum.reverse()
+    |> Enum.with_index()
+    |> Enum.reduce(0, fn {item, index}, acc ->
+      acc + String.to_integer(item) * Integer.pow(2, index)
+    end)
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 8, ...>>, {:run, 1}}
+```
+
+```elixir
+Solution.run(11_010_111)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+215
+```

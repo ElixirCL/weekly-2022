@@ -1,0 +1,32 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 040 - Triángulo de Pascal
+
+## TRIÁNGULO DE PASCAL
+
+* Reto #40
+* Fecha publicación enunciado: 03/10/22
+* Dificultad: MEDIA
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge40.kt
+
+## Enunciado
+
+Crea una función que sea capaz de dibujar el "Triángulo de Pascal" indicándole únicamente el tamaño del lado.
+
+Aquí puedes ver rápidamente cómo se calcula el triángulo
+
+![Pascal Triangle](https://commons.wikimedia.org/wiki/File:PascalTriangleAnimated2.gif)
+
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```
