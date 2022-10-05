@@ -48,7 +48,10 @@ Recomendamos instalar la versión de escritorio.
 * **#35** - 29/08/22 - [`BATALLA POKÉMON`](035-pokemon.livemd)
 * **#36** - 06/09/22 - [`LOS ANILLOS DE PODER`](036-anillos.livemd)
 * **#37** - 14/09/22 - [`LA LEGENDA DE ZELDA`](037-zelda.livemd)
-* **#38** - 20/09/22 - `Publicación nuevo reto...`
+* **#38** - 19/09/22 - [`BINARIO A DECIMAL`](038-bin2dec.livemd)
+* **#39** - 27/09/22 - [`TOP ALGORITMOS: QUICK SORT`](039-qsort.livemd)
+* **#40** - 03/10/22 - [`TRIÁNGULO DE PASCAL`](040-pascal.livemd)
+* **#41** - 10/10/22 - `Publicación nuevo reto...`
 
 ## Nota
 
