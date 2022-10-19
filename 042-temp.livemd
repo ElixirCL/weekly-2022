@@ -1,0 +1,33 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 042 - Conversor de Temperatura
+
+## CONVERSOR DE TEMPERATURA
+
+* Reto #42
+* Fecha publicación enunciado: 17/10/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge42.kt
+
+## Enunciado
+
+Escribe un programa que muestre por consola (con un print) 
+los números de 1 a 100 (ambos incluidos y con un salto de línea entre cada impresión), sustituyendo los siguientes:
+
+Crea una función que transforme grados Celsius en Fahrenheit y viceversa.
+
+- Para que un dato de entrada sea correcto debe poseer un símbolo "°" y su unidad ("C" o "F").
+- En caso contrario retornará un error.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```
