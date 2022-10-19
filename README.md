@@ -51,7 +51,9 @@ Recomendamos instalar la versión de escritorio.
 * **#38** - 19/09/22 - [`BINARIO A DECIMAL`](038-bin2dec.livemd)
 * **#39** - 27/09/22 - [`TOP ALGORITMOS: QUICK SORT`](039-qsort.livemd)
 * **#40** - 03/10/22 - [`TRIÁNGULO DE PASCAL`](040-pascal.livemd)
-* **#41** - 10/10/22 - `Publicación nuevo reto...`
+* **#41** - 10/10/22 - [`LA LEY DE OHM`](041-ohm.livemd)
+* **#42** - 17/10/22 - [`CONVERSOR DE TEMPERATURA`](042-temp.livemd)
+* **#43** - 24/10/22 - `Publicación nuevo reto...`
 
 ## Nota
 
