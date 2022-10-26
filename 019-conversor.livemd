@@ -9,8 +9,6 @@
 * Dificultad: FACIL
 * Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge19.kt
 
-<!-- livebook:{"break_markdown":true} -->
-
 ## Enunciado
 
 Crea una función que reciba días, horas, minutos y segundos (como enteros) y retorne su resultado en milisegundos.
@@ -18,12 +16,49 @@ Crea una función que reciba días, horas, minutos y segundos (como enteros) y r
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+defmodule Time do
+  def to_ms(days, hours, minutes, seconds) do
+    daysInMillis = days * 24 * 60 * 60 * 1000
+    hoursInMillis = hours * 60 * 60 * 1000
+    minutesInMillis = minutes * 60 * 1000
+    secondsToMillis = seconds * 1000
+    daysInMillis + hoursInMillis + minutesInMillis + secondsToMillis
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Time, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:to_ms, 4}}
+```
+
 ```elixir
-Solution.run()
+Time.to_ms(0, 0, 0, 10)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+10000
+```
+
+```elixir
+Time.to_ms(2, 5, -45, 10)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+188110000
+```
+
+```elixir
+Time.to_ms(2_000_000_000, 5, 45, 10)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+172800000020710000
 ```
