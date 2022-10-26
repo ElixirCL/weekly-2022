@@ -9,23 +9,49 @@
 * Dificultad: MEDIA
 * Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge20.kt
 
-<!-- livebook:{"break_markdown":true} -->
-
 ## Enunciado
 
 Crea una función que sume 2 números y retorne su resultado pasados unos segundos.
-- Recibirá por parámetros los 2 números a sumar y los segundos que debe tardar en finalizar su ejecución.
-- Si el lenguaje lo soporta, deberá retornar el resultado de forma asíncrona, es decir, sin detener la ejecución del programa principal. Se podría ejecutar varias veces al mismo tiempo.
+
+* Recibirá por parámetros los 2 números a sumar y los segundos que debe tardar en finalizar su ejecución.
+* Si el lenguaje lo soporta, deberá retornar el resultado de forma asíncrona, es decir, sin detener la ejecución del programa principal. Se podría ejecutar varias veces al mismo tiempo.
 
 ## Solución
 
 ```elixir
 defmodule Solution do
-  def run() do
+  def run(first_num, second_num, seconds) do
+    Task.async(fn ->
+      :timer.sleep(seconds * 1000)
+      first_num + second_num
+    end)
+    |> Task.await(:infinity)
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 7, ...>>, {:run, 3}}
+```
+
 ```elixir
-Solution.run()
+Solution.run(1, 3, 5)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+4
+```
+
+```elixir
+Solution.run(5, 2, 10)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+7
 ```
