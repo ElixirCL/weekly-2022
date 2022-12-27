@@ -1,0 +1,28 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 050 - Encriptación de Karaca
+
+## LA ENCRIPTACIÓN DE KARACA
+
+* Reto #50
+* Fecha publicación enunciado: 12/12/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge50.kt
+
+## Enunciado
+
+Crea una función que sea capaz de encriptar y desencriptar texto utilizando el
+algoritmo de encriptación de Karaca (debes buscar información sobre él).
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

@@ -9,22 +9,46 @@
 * Dificultad: FÁCIL
 * Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge22.kt
 
-<!-- livebook:{"break_markdown":true} -->
-
 ## Enunciado
 
 Crea una función que reciba dos array, un booleano y retorne un array.
-- Si el booleano es verdadero buscará y retornará los elementos comunes de los dos array.
-- Si el booleano es falso buscará y retornará los elementos no comunes de los dos array.
-- No se pueden utilizar operaciones del lenguaje que lo resuelvan directamente.
+
+* Si el booleano es verdadero buscará y retornará los elementos comunes de los dos array.
+* Si el booleano es falso buscará y retornará los elementos no comunes de los dos array.
+* No se pueden utilizar operaciones del lenguaje que lo resuelvan directamente.
 
 ## Solución
 
 ```elixir
 defmodule Solution do
-  def run() do
+  def run(first, second, true) do
+    Enum.map(first, fn item1 ->
+      Enum.map(second, fn item2 ->
+        nil
+      end)
+    end)
+  end
+
+  def run(first, second, false) do
   end
 end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+warning: variable "first" is unused (if the variable is not meant to be used, prefix it with an underscore)
+  Developer/elixircl/weekly-2022/022-conjuntos.livemd#cell:qxffaeds6h7g36koqasbl5lbyf4bnnvh:6: Solution.run/3
+
+warning: variable "second" is unused (if the variable is not meant to be used, prefix it with an underscore)
+  Developer/elixircl/weekly-2022/022-conjuntos.livemd#cell:qxffaeds6h7g36koqasbl5lbyf4bnnvh:6: Solution.run/3
+
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 3}}
 ```
 
 ```elixir

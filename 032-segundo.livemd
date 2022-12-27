@@ -9,8 +9,6 @@
 * Dificultad: FÁCIL
 * Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge32.kt
 
-<!-- livebook:{"break_markdown":true} -->
-
 ## Enunciado
 
 Dado un listado de números, encuentra el SEGUNDO más grande.
@@ -19,11 +17,26 @@ Dado un listado de números, encuentra el SEGUNDO más grande.
 
 ```elixir
 defmodule Solution do
-  def run() do
+  def run(list) do
+    list
+    |> Enum.sort(&>=/2)
+    |> Enum.at(1)
   end
 end
 ```
 
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Solution, <<70, 79, 82, 49, 0, 0, 6, ...>>, {:run, 1}}
+```
+
 ```elixir
-Solution.run()
+Solution.run([1, 2, 3, 4])
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+3
 ```

@@ -53,7 +53,15 @@ Recomendamos instalar la versión de escritorio.
 * **#40** - 03/10/22 - [`TRIÁNGULO DE PASCAL`](040-pascal.livemd)
 * **#41** - 10/10/22 - [`LA LEY DE OHM`](041-ohm.livemd)
 * **#42** - 17/10/22 - [`CONVERSOR DE TEMPERATURA`](042-temp.livemd)
-* **#43** - 24/10/22 - `Publicación nuevo reto...`
+* **#43** - 24/10/22 - [`TRUCO O TRATO`](043-truco.livemd)
+* **#44** - 02/11/22 - [`BUMERANES`](044-bumeranes.livemd)
+* **#45** - 07/11/22 - [`CONTENEDOR DE AGUA`](045-agua.livemd)
+* **#46** - 14/11/22 - [`¿DÓNDE ESTÁ EL ROBOT?`](046-robot.livemd)
+* **#47** - 21/11/22 - [`VOCAL MÁS COMÚN`](047-vocal.livemd)
+* **#48** - 28/11/22 - [`EL CALENDARIO DE ADEVIENTO 2022`](048-calendario.livemd)
+* **#49** - 05/12/22 - [`EL DETECTOR DE HANDLES`](049-handles.livemd)
+* **#50** - 12/12/22 - [`LA ENCRIPTACIÓN DE KARACA`](050-karaca.livemd)
+* **#51** - 19/12/22 - [`EL RETO RANDOM`](051-random.livemd)
 
 ## Nota
 

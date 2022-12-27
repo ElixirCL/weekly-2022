@@ -1,0 +1,30 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 051 - Random
+
+## EL RETO RANDOM
+
+* Reto #51
+* Fecha publicación enunciado: 19/12/22
+* Dificultad: ?
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge51.kt
+
+## Enunciado
+
+Crea tu propio enunciado para que forme parte de los retos.
+
+- Ten en cuenta que su dificultad debe ser asumible por la comunidad y seguir un estilo semejante a los que hemos realizado durante el año.
+- Si quieres también puedes proponer tu propia solución al reto.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```

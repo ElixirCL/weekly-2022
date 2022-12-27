@@ -1,0 +1,30 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# 047 - Vocal Más Común
+
+## VOCAL MÁS COMÚN
+
+* Reto #47
+* Fecha publicación enunciado: 21/11/22
+* Dificultad: FÁCIL
+* Origen: https://github.com/mouredev/Weekly-Challenge-2022-Kotlin/blob/main/app/src/main/java/com/mouredev/weeklychallenge2022/Challenge47.kt
+
+## Enunciado
+
+Crea un función que reciba un texto y retorne la vocal que más veces se repita.
+
+- Ten cuidado con algunos casos especiales.
+- Si no hay vocales podrá devolver vacío.
+
+## Solución
+
+```elixir
+defmodule Solution do
+  def run() do
+  end
+end
+```
+
+```elixir
+Solution.run()
+```
