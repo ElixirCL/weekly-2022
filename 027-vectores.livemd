@@ -30,7 +30,7 @@ defmodule Solution do
   end
 end
 
-/*FelipeMuñoz*/
+##FelipeMuñoz
 ```
 
 ```elixir
