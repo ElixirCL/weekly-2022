@@ -22,6 +22,8 @@ Crea un programa que determine si dos vectores son ortogonales.
 ```elixir
 defmodule Solution do
   def run() do
+ IO.puts are_orthogonal({1, 2}, {2, 1})
+    IO.puts are_orthogonal({2, 1}, {-1, 2})
   end
 end
 ```
