@@ -25,9 +25,25 @@ que reciba dinero (array de monedas) y un número que indique la selección del 
 ## Solución
 
 ```elixir
-defmodule Solution do
-  def run() do
+defmodule VendingMachine do
+  def comprar(dinero_ingresado, costo_producto) when is_integer(dinero_ingresado) and dinero_ingresado >= 0 and is_integer(costo_producto) and costo_producto >= 0 do
+    if dinero_ingresado < costo_producto do
+      {:error, "No tienes suficiente dinero para comprar este producto."}
+    else
+      {:ok, "Compra exitosa. Tu cambio es #{dinero_ingresado - costo_producto}."}
+    end
   end
+end
+
+# Ejemplo de uso:
+dinero_ingresado = 100  # Aquí ingresa la cantidad de dinero
+costo_producto = 75    # Aquí ingresa el costo del producto
+
+case VendingMachine.comprar(dinero_ingresado, costo_producto) do
+  {:ok, mensaje} ->
+    IO.puts("¡#{mensaje}")
+  {:error, mensaje} ->
+    IO.puts("Error: #{mensaje}")
 end
 ```
 
