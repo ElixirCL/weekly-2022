@@ -48,5 +48,5 @@ end
 ```
 
 ```elixir
-Solution.run()
+¡Compra exitosa. Tu cambio es 25.
 ```
